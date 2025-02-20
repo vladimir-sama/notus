@@ -1,0 +1,24 @@
+{% extends 'parent.html' %}
+{% block content_body %}
+    <h1>Notus</h1>
+    <p class='p_container'>
+        Upload files as {{ session['username'] }} to {{ '/' + upload_dir if upload_dir else 'root folder' }}
+    </p>
+    <form hx-target='#message_error' hx-swap='innerHTML' hx-encoding='multipart/form-data' hx-post='/upload/{{ upload_dir }}' _='on htmx:xhr:progress(loaded, total) set #progress.value to (loaded/total)*100'>
+        <p><label class='input_file_mask' style='width: 30ch; height: 6ch;'  for='file_upload'>Select files</label></p>
+        <input class='input_file' type='file' id='file_upload' name='uploads' multiple required>
+        <progress id='progress' value='0' max='100'></progress>
+        <p id='message_error'>{{ message_error }}</p>
+        <p>
+            <a href='/view/{{ upload_dir }}'>
+                <button type='button'>
+                    Back
+                </button>
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <button type='submit'>
+                Upload
+            </button>
+        </p>
+    </form>
+{% endblock %}

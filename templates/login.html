@@ -1,0 +1,21 @@
+{% extends 'parent.html' %}
+{% block content_body %}
+    <h1>Notus</h1>
+    <p>Login to access cloud storage:</p>
+    <form action='/login' method='POST' enctype='multipart/form-data'>
+        <p><input type='text' maxlength='20' style='width: 30ch;' name='login_name' placeholder='(Username)' required></p>
+        <p><input type='password' maxlength='20' style='width: 30ch;' name='login_password' placeholder='(Password)' required></p>
+        <p>{{ message_error }}</p>
+        <p>
+            <a href='/'>
+                <button type='button'>
+                    Back
+                </button>
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <button type='submit'>
+                Login
+            </button>
+        </p>
+    </form>
+{% endblock %}

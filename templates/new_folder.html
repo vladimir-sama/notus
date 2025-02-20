@@ -1,0 +1,20 @@
+{% extends 'parent.html' %}
+{% block content_body %}
+    <h1>Notus</h1>
+    <p>Creating new directory at {{ '/' + current_dir if current_dir else 'root folder' }}:</p>
+    <form action='/new_folder/{{ current_dir }}' method='POST' enctype='multipart/form-data'>
+        <p><input type='text' maxlength='250' style='width: 50ch;' name='folder_name' placeholder='(Folder name)' required></p>
+        <p>{{ message_error }}</p>
+        <p>
+            <a href='/view/{{ current_dir }}'>
+                <button type='button'>
+                    Back
+                </button>
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <button type='submit'>
+                Create
+            </button>
+        </p>
+    </form>
+{% endblock %}

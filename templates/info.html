@@ -1,0 +1,54 @@
+{% extends 'parent.html' %}
+{% block content_body %}
+    <h1>Notus</h1>
+    <p class='p_container'>
+        {{ 'Directory' if is_dir else 'File' }}
+        <br>
+        <button type='button'>
+            {{ file_name }}
+        </button>
+        <br>
+        <button type='button'>
+            {{ file_size }}
+        </button>
+    </p>
+    <p class='p_container'>
+        <a href='/rename/{{ file_path }}'>
+            <button type='button'>
+                Rename
+            </button>
+        </a>
+        &nbsp;&nbsp;&nbsp;
+        <a href='/move/{{ file_path }}'>
+            <button type='button'>
+                Cut
+            </button>
+        </a>
+        &nbsp;&nbsp;&nbsp;
+        <a href='/delete/{{ file_path }}'>
+            <button type='button'>
+                Delete
+            </button>
+        </a>
+        {% if not is_dir %}
+            &nbsp;&nbsp;&nbsp;
+            <a href='/download/{{ file_path }}'>
+                <button type='button'>
+                    Download
+                </button>
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <a href='/link/{{ file_path }}'>
+                <button type='button'>
+                    Get Link
+                </button>
+            </a>
+        {% endif %}
+    <p>
+        <a href='/view/{{ current_dir }}'>
+            <button type='button'>
+                Back
+            </button>
+        </a>
+    </p>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'parent.html' %}
+{% block content_body %}
+    <h1>Notus</h1>
+    <p class='p_container'>
+        <button type='button'>
+            {{ session['username'] }}
+        </button>
+        <br>
+        Files at
+        <br>
+        <button type='button'>
+            {{ '/' + current_dir if current_dir else 'root folder' }}
+        </button>
+    </p>
+    <ul class='file_view'>
+        {% if current_dir %}
+            <li>
+                <a class='li_dir' href='/view/{{ up_dir }}'>
+                    <button type='button'>
+                        ..
+                    </button>
+                </a>
+            </li>
+        {% endif %}
+        {% for file_key in file_list.keys() %}
+            <li>
+                {% if file_list[file_key] %}
+                    <a class='li_dir' href='/view/{{ join(current_dir, file_key) }}'>
+                        <button type='button'>
+                            {{ file_key }}
+                        </button>
+                    </a>
+                    &nbsp;
+                     <a class='li_file' href='/info/{{ join(current_dir, file_key) }}'>
+                        <button type='button'>
+                            Info
+                        </button>
+                    </a>
+                {% else %}
+                    <a class='li_file' href='/info/{{ join(current_dir, file_key) }}'>
+                        <button type='button'>
+                            {{ file_key }}
+                        </button>
+                    </a>
+                {% endif %}
+            </li>
+        {% else %}
+            <li>
+                <button class='li_file' type='button'>
+                    Empty
+                </button>
+            </li>
+        {% endfor %}
+    </ul>
+    {% if session.get('clipboard', None) %}
+        <form action='/move/{{ current_dir }}' method='POST' enctype='multipart/form-data'>
+            <p class='p_container'>
+                <span>
+                    Clipboard : 
+                    <button type='button'>
+                        {{ session['clipboard'] }}
+                    </button>
+                </span>
+                &nbsp;
+                <a href='/clear/'>
+                    <button type='button'>
+                        Clear
+                    </button>
+                </a>
+                &nbsp;&nbsp;&nbsp;
+                <button type='submit'>
+                    Paste
+                </button>
+            </p>
+        </form>
+    {% endif %}
+    <p class='p_container'>
+        <span>
+            &nbsp;Current directories and subdirectories size is &nbsp;
+            <button type='button'>
+                {{ folder_size }}
+            </button>
+        </span>
+    </p>
+    <p class='p_container'>
+        <a href='/new_folder/{{ current_dir }}'>
+            <button type='button'>
+                New Folder
+            </button>
+        </a>
+        &nbsp;&nbsp;&nbsp;
+        <a href='/upload/{{ current_dir }}'>
+            <button type='button'>
+                Upload
+            </button>
+        </a>
+        &nbsp;&nbsp;&nbsp;
+        <a href='/user/'>
+            <button type='button'>
+                Account
+            </button>
+        </a>
+        &nbsp;&nbsp;&nbsp;
+        <a href='/logout'>
+            <button type='button'>
+                Logout
+            </button>
+        </a>
+    </p>
+{% endblock %}

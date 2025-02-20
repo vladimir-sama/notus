@@ -1,0 +1,31 @@
+{% extends 'parent.html' %}
+{% block content_body %}
+    <h1>Notus</h1>
+    <p>New account creation:</p>
+    <form action='/new_account' method='POST' enctype='multipart/form-data'>
+        <p><input type='text' maxlength='20' style='width: 30ch;' name='login_name' placeholder='(Username)' required></p>
+        <p><input type='password' maxlength='20' style='width: 30ch;' name='login_password' placeholder='(Password)' required></p>
+        <p class='p_container'>
+            Size hint :
+            &nbsp;
+            <input type='radio' name='size_option', value='1048576' id='radio_mib'>
+            <label for='radio_mib'>MiB</label>
+            &nbsp;
+            <input type='radio' name='size_option', value='1073741824' id='radio_gib' checked>
+            <label for='radio_gib'>GiB</label>
+        </p>
+        <p><input type='number' style='width: 30ch;' name='account_size' placeholder='(Size)' required></p>
+        <p>{{ message_error }}</p>
+        <p>
+            <a href='/'>
+                <button type='button'>
+                    Back
+                </button>
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <button type='submit'>
+                Create
+            </button>
+        </p>
+    </form>
+{% endblock %}

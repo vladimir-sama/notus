@@ -1,0 +1,11 @@
+{% extends 'parent.html' %}
+{% block content_body %}
+    <h1>404</h1>
+    <p>
+        {% if session.get('username') %}
+            <a href='/view'>Return</a>
+        {% else %}
+            <a href='/login'>Login</a>
+        {% endif %}
+    </p>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'parent.html' %}
+{% block content_body %}
+    <h1>Notus</h1>
+    <p class='p_container'>
+        Link for
+        <button type='button'>
+            {{ file_name }}
+        </button>
+        is 
+        <a href='/public/{{ link_code }}'>
+            <button type='button'>
+                {{ link_code }}
+            </button>
+        </a>
+    </p>
+    <p>
+        <a href='/view/{{ current_dir }}'>
+            <button type='button'>
+                Back
+            </button>
+        </a>
+        &nbsp;
+        <a href='/revoke/{{ link_code }}'>
+            <button type='button'>
+                Revoke
+            </button>
+        </a>
+    </p>
+{% endblock %}

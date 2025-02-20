@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Notus</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <link rel='stylesheet' type='text/css' href='{{ url_for("static", filename="style.css") }}'>
+        <link rel='icon' type='image/icon' href='{{ url_for("static", filename="icon.svg") }}'>
+        <script src='{{ url_for("static", filename="htmx.min.js") }}'></script>
+        <script src='{{ url_for("static", filename="hyperscript.min.js") }}'></script>
+    </head>
+    <body id='content_body'>
+        {% block content_body %}
+        {% endblock %}
+    </body>
+</html>

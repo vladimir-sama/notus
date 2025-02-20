@@ -1,0 +1,40 @@
+{% extends 'parent.html' %}
+{% block content_body %}
+    <h1>Notus</h1>
+    <p class='p_container'>
+        File :
+        <br>
+        <button type='button'>
+            {{ file_name }}
+        </button>
+        <br>
+        <button type='button'>
+            {{ file_size }}
+        </button>
+        <br>
+        <button type='button'>
+            {{ user }}
+        </button>
+    </p>
+    <p>
+        <a href='download'>
+            <button type='button'>
+                Download
+            </button>
+        </a>
+    <p>
+        <a href='/'>
+            <button type='button'>
+                Home
+            </button>
+        </a>
+        {% if user == session.get('username', None) %}
+            &nbsp;&nbsp;&nbsp;
+            <a href='/revoke/{{ link_code }}'>
+                <button type='button'>
+                    Revoke
+                </button>
+            </a>
+        {% endif %}
+    </p>
+{% endblock %}

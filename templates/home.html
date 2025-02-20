@@ -1,0 +1,22 @@
+{% extends 'parent.html' %}
+{% block content_body %}
+    <img src='{{ url_for("static", filename="icon.svg") }}' width='20%' height='20%'>
+    <h1>Notus</h1>
+    <p class='p_container'>
+        I am the storm that is approaching!
+        <br>
+        {% if session.get('username') %}
+            <a href='/logout'>
+                <button type='button'>
+                    Logout
+                </button>
+            </a>
+        {% else %}
+            <a href='/login'>
+                <button type='button'>
+                    Login
+                </button>
+            </a>
+        {% endif %}
+    </p>
+{% endblock %}

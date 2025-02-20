@@ -1,0 +1,75 @@
+{% extends 'parent.html' %}
+{% block content_body %}
+    <h1>Notus</h1>
+    <p class='p_container'>
+        <button type='button'>
+            {{ session['username'] }}
+        </button>
+        &nbsp;&nbsp;&nbsp;
+        <button type='button'>
+            {{ current_size }} / {{ max_size }}
+        </button>
+        <br>
+        <a href='/logout'>
+            <button type='button'>
+                Logout
+            </button>
+        </a>
+        &nbsp;&nbsp;&nbsp;
+        <a href='/logout_global'>
+            <button type='button'>
+                Clear Tokens
+            </button>
+        </a>
+        &nbsp;&nbsp;&nbsp;
+        <a href='/view/'>
+            <button type='button'>
+                Back
+            </button>
+        </a>
+    </p>
+    <p class='p_container'>
+        Shared links:
+        <br>
+        {% for link_code in shared_links %}
+            <a href='/public/{{ link_code }}'>
+                <button type='button'>
+                    {{ link_code }}
+                </button>
+            </a>
+        {% else %}
+            <button type='button'>
+                Empty
+            </button>
+        {% endfor %}
+    </p>
+    {% if session['username'] == 'admin' %}
+        <p class='p_container'>
+            Admin Panel:
+            <br>
+            <a href='/reload_accounts/'>
+                <button type='button'>
+                    Reload Accounts
+                </button>
+            </a>
+            <br>
+            <a href='/reload_links/'>
+                <button type='button'>
+                    Reload Links
+                </button>
+            </a>
+            <br>
+             <a href='/new_account/'>
+                <button type='button'>
+                    New Account
+                </button>
+            </a>
+            <br>
+             <a href='/remove_account/'>
+                <button type='button'>
+                    Remove Account
+                </button>
+            </a>
+        </p>
+    {% endif %}
+{% endblock %}

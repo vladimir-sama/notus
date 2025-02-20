@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url('opensans_regular.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Open Sans';
+    color: lightgray;
+    text-align: center;
+    background-color: #040404;
+}
+
+h1 {
+    font-style: italic;
+}
+
+a {
+    color: lightblue;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+a:hover {
+    color: slateblue;
+}
+
+.dir {
+    color: white;
+}
+
+input {
+    font-family: 'Open Sans';
+    border-radius: 1ch;
+    border: 0;
+    color: lightgray;
+    background-color: #020202;
+    padding: 1ch;
+}
+
+button {
+    font-family: 'Open Sans';
+    border-radius: 1ch;
+    border: 0;
+    color: lightgray;
+    background-color: #020202;
+    font-size: medium;
+    margin: auto;
+    padding: 1ch;
+}
+
+.file_view {
+    height: 70vh;
+    width: 30vw;
+    min-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: scroll;
+    border-radius: 1ch;
+    background-color: #020202;
+    text-align: left;
+    list-style-position: inside;
+}
+
+li {
+    margin-top: 4px;
+}
+
+img {
+    height: 10%;
+    width: 10%;
+    border-radius: 50%;
+}
+
+.input_file_mask {
+    font-family: 'Open Sans';
+    cursor: pointer;
+    color: lightgray;
+    background-color: #020202;
+    border: 0;
+    border-radius: 1ch;
+    transition: 0.5s;
+    display: inline-block;
+}
+
+.input_file_mask:hover {   
+    color: slateblue;
+}
+ 
+.input_file {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+progress {
+    border: 0;
+    border-radius: 1ch;
+    padding: 4px;
+    background-color: black;
+}
+
+progress::-moz-progress-bar {
+    background-color: slateblue;
+    border-radius: 1ch;
+}
